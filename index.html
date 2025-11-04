@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Экскурсии Сочи и Абхазии | Ваяж Adler</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1>Экскурсии по Сочи и Абхазии</h1>
+      <p>Индивидуальные и групповые туры из Адлерского района с проверенными гидами и комфортным транспортом.</p>
+      <a href="#tours" class="hero__cta">Выбрать экскурсию</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="about">
+      <div class="container">
+        <h2>Почему выбирают нас</h2>
+        <div class="about__grid">
+          <article>
+            <h3>Локальные маршруты</h3>
+            <p>Мы обновили программу на сезон 2025: только самые востребованные экскурсии с актуальными ценами и расписанием.</p>
+          </article>
+          <article>
+            <h3>Гибкие форматы</h3>
+            <p>Выезд возможен из Сочи, Адлера, Красной Поляны, Олимпийского парка и Имеретинки. Выбирайте комфортный транспорт и место.</p>
+          </article>
+          <article>
+            <h3>Выгодная оплата</h3>
+            <p>Бронируйте онлайн и получайте скидку 5% при досрочной оплате картой. Электронный ваучер приходит на почту моментально.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tours" class="tours container">
+      <h2>Популярные маршруты 2025</h2>
+      <div id="tour-list" class="tours__list"></div>
+    </section>
+
+    <section class="faq">
+      <div class="container">
+        <h2>Частые вопросы</h2>
+        <details>
+          <summary>Какие варианты транспорта доступны?</summary>
+          <p>Для индивидуальных и малых групп доступны бизнес-класс кроссоверы и минивэны на 6–8 мест, для больших компаний — комфортные туристические автобусы на 30–45 мест.</p>
+        </details>
+        <details>
+          <summary>Как получить скидку 5%?</summary>
+          <p>При выборе опции «Оплатить онлайн картой» система автоматически рассчитает скидку. После оплаты вы получаете подтверждение и ваучер на указанную почту.</p>
+        </details>
+        <details>
+          <summary>Можно ли изменить дату или место посадки?</summary>
+          <p>Вы можете бесплатно изменить дату и точку выезда не позднее чем за 24 часа до старта экскурсии. Просто ответьте на письмо-подтверждение или свяжитесь с менеджером.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__content">
+      <div>
+        <h3>Ваяж Adler</h3>
+        <p>Официальный туроператор по Сочи и Абхазии. Ежедневные выезды, лицензированные гиды и новые автомобили.</p>
+      </div>
+      <div>
+        <p><strong>Телефон:</strong> +7 (862) 555-23-77</p>
+        <p><strong>WhatsApp:</strong> +7 (918) 123-45-67</p>
+        <p><strong>E-mail:</strong> booking@voyage-adler.ru</p>
+      </div>
+      <div>
+        <p>© 2025 «Ваяж Adler». Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="booking-modal" class="modal" aria-hidden="true">
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal__close" type="button" aria-label="Закрыть">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <template id="tour-card-template">
+    <article class="tour-card">
+      <div class="tour-card__media">
+        <div class="tour-card__carousel">
+          <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Предыдущее фото">‹</button>
+          <div class="carousel__viewport">
+            <div class="carousel__track"></div>
+          </div>
+          <button class="carousel__btn carousel__btn--next" type="button" aria-label="Следующее фото">›</button>
+        </div>
+      </div>
+      <div class="tour-card__body">
+        <h3 class="tour-card__title"></h3>
+        <p class="tour-card__subtitle"></p>
+        <p class="tour-card__description"></p>
+        <ul class="tour-card__meta"></ul>
+        <div class="tour-card__pricing"></div>
+        <button class="tour-card__book" type="button">Забронировать</button>
+      </div>
+    </article>
+  </template>
+
+  <template id="booking-form-template">
+    <form class="booking-form">
+      <h2 id="modal-title">Бронирование экскурсии</h2>
+      <p class="booking-form__tour"></p>
+      <label>
+        Контактное лицо
+        <input name="clientName" type="text" required placeholder="Имя и фамилия">
+      </label>
+      <label>
+        Телефон
+        <input name="phone" type="tel" required placeholder="+7 (___) ___-__-__">
+      </label>
+      <label>
+        Email для подтверждения
+        <input name="email" type="email" required placeholder="name@example.com">
+      </label>
+      <label>
+        Дата экскурсии
+        <input name="date" type="date" required>
+      </label>
+      <label>
+        Место выезда
+        <select name="pickup" required></select>
+      </label>
+      <label>
+        Транспорт
+        <select name="transport" required>
+          <option value="minivan" data-capacity="8">Минивэн (до 8 мест)</option>
+          <option value="suv" data-capacity="5">Кроссовер (до 5 мест)</option>
+          <option value="bus" data-capacity="40">Автобус (до 40 мест)</option>
+        </select>
+      </label>
+      <label>
+        Выбор места
+        <select name="seat" required></select>
+      </label>
+      <label>
+        Количество участников
+        <input name="participants" type="number" min="1" max="40" value="2" required>
+      </label>
+      <fieldset class="booking-form__payment">
+        <legend>Способ оплаты</legend>
+        <label>
+          <input type="radio" name="payment" value="onsite" checked>
+          Оплата на месте (без скидки)
+        </label>
+        <label>
+          <input type="radio" name="payment" value="online">
+          Оплатить онлайн картой (скидка 5%)
+        </label>
+      </fieldset>
+      <p class="booking-form__total"></p>
+      <button type="submit">Отправить заявку</button>
+    </form>
+  </template>
+
+  <script src="js/app.js" type="module"></script>
+</body>
+</html>
