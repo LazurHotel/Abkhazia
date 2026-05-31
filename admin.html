@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кабинет управляющего — Кофе-принт</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+</head>
+<body>
+  <header class="admin-header">
+    <div class="container">
+      <a href="admin.html" class="logo"><span>☕</span> Кофе-принт · Кабинет</a>
+      <div class="admin-header__actions">
+        <button class="btn btn--ghost btn--sm" id="btn-refresh">⟳ Обновить</button>
+        <button class="btn btn--ghost btn--sm" id="btn-export">⬇ Экспорт CSV</button>
+        <button class="btn btn--ghost btn--sm" id="btn-demo">Демо-данные</button>
+        <button class="btn btn--danger btn--sm" id="btn-reset">Сбросить всё</button>
+        <a class="btn btn--amber btn--sm" href="index.html">← На витрину</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-title">
+        <h1>Панель управления заведением</h1>
+        <p>Заказы печати и кофейни, выручка, очередь работ и программа лояльности — в одном месте.</p>
+      </div>
+
+      <div class="note">💡 Данные хранятся локально в этом браузере (демо). Заказы с витрины появляются здесь автоматически. Кнопка «Демо-данные» восстановит примеры.</div>
+
+      <div class="kpis" id="kpis"></div>
+
+      <div class="card">
+        <div class="card__head">
+          <h2>📋 Заказы</h2>
+          <div class="filters">
+            <button class="filter is-active" data-status="all">Все</button>
+            <button class="filter" data-status="new">Новые</button>
+            <button class="filter" data-status="in_progress">В работе</button>
+            <button class="filter" data-status="ready">Готовы</button>
+            <button class="filter" data-status="done">Выданы</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Заказ</th><th>Услуга</th><th>Описание</th><th>Клиент</th><th>Сумма</th><th>Статус</th><th>Действие</th></tr></thead>
+            <tbody id="orders-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <div class="card">
+            <div class="card__head"><h2>💰 Выручка по услугам</h2></div>
+            <div class="bars" id="revenue-bars"></div>
+          </div>
+          <div class="card">
+            <div class="card__head"><h2>🎟️ Программа лояльности</h2></div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Гость</th><th>Телефон</th><th>Штампы</th><th>Подарков</th></tr></thead>
+                <tbody id="members-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__head"><h2>🖨️ Очередь печати</h2></div>
+          <div class="queue" id="queue"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

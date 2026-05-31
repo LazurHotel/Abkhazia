@@ -1,314 +1,463 @@
-const tours = [
-  {
-    id: 'rosa-khutor',
-    title: 'Красная Поляна и курорт Роза Хутор',
-    subtitle: 'Горный парк «Роза Пик», олимпийское наследие и SPA-долина',
-    description:
-      'Комбинированная экскурсия по главным локациям Красной Поляны: канатная дорога на высоту 2320 м, прогулка по набережной Мзымты, дегустация башенского сыра и посещение авторского чана с термальной водой.',
-    duration: '8 часов',
-    type: 'Групповая / индивидуальная',
-    price: 7800,
-    pickup: ['Адлер (центр)', 'ЖД вокзал Адлер', 'Олимпийский парк', 'Имеретинская бухта'],
-    includes: 'Трансфер, услуги гида, подъём на канатной дороге «Олимпия», дегустация фермерских продуктов',
-    photos: [
-      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1544552866-d3ed42536c67?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1603667765511-9fae9ef32edc?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1526481280695-3c4697b59be5?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1560264418-c4445382edbc?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1579732434579-7cd6f9c5c77f?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1577826027493-0f557f59b9d4?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80'
-    ]
-  },
-  {
-    id: 'skypark',
-    title: 'Скайпарк AJ Hackett и Ахштырское ущелье',
-    subtitle: 'Самый длинный подвесной мост России, виды на море и прыжки bungee',
-    description:
-      'Интенсив для любителей экстрима: прогулка по подвесному мосту Skybridge, смотровые площадки Ахштырского ущелья, zip-line через каньон и визит в этно-ферму с домашним обедом.',
-    duration: '6 часов',
-    type: 'Мини-группа до 12 человек',
-    price: 6900,
-    pickup: ['Адлер (центр)', 'Курортный городок', 'Сириус', 'Веселое'],
-    includes: 'Трансфер, билет на мост Skybridge, сопровождение инструкторов, страхование',
-    photos: [
-      'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1493815793585-d94ccbc86df0?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1523419409543-0c1df022bdd1?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1443980995706-8d107e98e707?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1458442310124-dde6edb43d10?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1525187494000-bf1dc51cc40c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1468323867382-6c64aa1b17ab?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1525972156385-d1f9c923518e?auto=format&fit=crop&w=1600&q=80'
-    ]
-  },
-  {
-    id: 'ritsa',
-    title: 'Абхазия: озеро Рица и Голубое озеро',
-    subtitle: 'Высокогорные панорамы, водопады Мужские слезы и дегустации в Псырцхе',
-    description:
-      'Погружение в природу Абхазии: Гегский и Голубой водопады, озеро Рица, дача Сталина, монастырский комплекс в Новом Афоне и национальный обед с адыгейским сыром и апсуой.',
-    duration: '12 часов',
-    type: 'Групповая / индивидуальная',
-    price: 8600,
-    pickup: ['Адлер (центр)', 'Блиново', 'Имеретинский курорт', 'Красная Поляна'],
-    includes: 'Трансфер с прохождением границы, сопровождение гида, страховка, дегустации вин и меда',
-    photos: [
-      'https://images.unsplash.com/photo-1612510259272-abe5a6435375?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1519824145371-296894a0daa9?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1533616688419-b7a585564566?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1530587191325-3db32a5a4f40?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1604335399105-24afcbee4fd5?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1523882012223-27db6a373d9b?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?auto=format&fit=crop&w=1600&q=80'
-    ]
-  },
-  {
-    id: 'new-afon',
-    title: 'Новый Афон и пещеры Анакопии',
-    subtitle: 'Византийские храмы, гроты и уединённые пляжи Черноморского побережья',
-    description:
-      'Исторический маршрут с посещением Новоафонского монастыря, Симоно-Кананитского храма, смотровой площадки на Иверской горе и карстовых пещер Анакопии с лазурными озёрами.',
-    duration: '11 часов',
-    type: 'Комфорт-класс, до 18 человек',
-    price: 8200,
-    pickup: ['Адлер (центр)', 'Сириус', 'Имеретинская бухта', 'Хоста'],
-    includes: 'Трансфер, экскурсионное обслуживание, входные билеты в пещеры, дегустация абхазских чаёв',
-    photos: [
-      'https://images.unsplash.com/photo-1614167945645-9b7353b236ed?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1560448205-17d3a46c84c9?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1517321458682-84aa0f6c5a1d?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1544984243-ec57ea16fe25?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1470074558764-4e65b2446d6d?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1604335399105-24afcbee4fd5?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1529926455182-6c4a1a220a67?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=80'
-    ]
-  },
-  {
-    id: 'agursky-waterfalls',
-    title: 'Агурские водопады и гора Ахун на закате',
-    subtitle: 'Треккинг по каньону Агуры и панорамы с башни Ахун',
-    description:
-      'Вечернее путешествие по Агурскому ущелью с купанием у водопадов, пикник с локальными снэками и встреча заката на обзорной площадке горы Ахун с видом на Большой Сочи.',
-    duration: '5 часов',
-    type: 'Авторский маршрут, до 15 человек',
-    price: 5400,
-    pickup: ['Адлер (центр)', 'Хоста', 'Сочи (центр)', 'Мацеста'],
-    includes: 'Гид-натуралист, треккинг-палки, пикниковый набор, подъём на башню Ахун',
-    photos: [
-      'https://images.unsplash.com/photo-1459664018906-085c36f472af?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1494523381954-4c1b270e7af5?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1457213453082-fecc5bbe99fc?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1500534312892-43a2ee1b1ec0?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1491557345352-5929e343eb89?auto=format&fit=crop&w=1600&q=80'
-    ]
-  }
-];
+/* ============================================================
+   Кофе-принт — витрина для клиентов.
+   Требует: js/data.js (window.CP), js/store.js (window.CPStore)
+   ============================================================ */
+(function () {
+  const CP = window.CP;
+  const Store = window.CPStore;
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-const tourList = document.querySelector('#tour-list');
-const cardTemplate = document.querySelector('#tour-card-template');
-const bookingTemplate = document.querySelector('#booking-form-template');
-const modal = document.querySelector('#booking-modal');
-const modalContent = document.querySelector('#modal-content');
-const modalClose = document.querySelector('.modal__close');
+  const fmt = (n) => new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 }).format(Math.round(n));
 
-function formatPrice(value) {
-  return new Intl.NumberFormat('ru-RU', {
-    style: 'currency',
-    currency: 'RUB',
-    maximumFractionDigits: 0
-  }).format(value);
-}
-
-function createTourCard(tour) {
-  const card = cardTemplate.content.firstElementChild.cloneNode(true);
-  card.dataset.tourId = tour.id;
-
-  const titleEl = card.querySelector('.tour-card__title');
-  const subtitleEl = card.querySelector('.tour-card__subtitle');
-  const descriptionEl = card.querySelector('.tour-card__description');
-  const metaEl = card.querySelector('.tour-card__meta');
-  const pricingEl = card.querySelector('.tour-card__pricing');
-  const bookBtn = card.querySelector('.tour-card__book');
-
-  titleEl.textContent = tour.title;
-  subtitleEl.textContent = tour.subtitle;
-  descriptionEl.textContent = tour.description;
-
-  metaEl.innerHTML = '';
-  const metaItems = [
-    `Длительность: ${tour.duration}`,
-    `Тип: ${tour.type}`,
-    `Выезд: ${tour.pickup.join(', ')}`,
-    `Включено: ${tour.includes}`
-  ];
-
-  metaItems.forEach((item) => {
-    const li = document.createElement('li');
-    li.textContent = item;
-    metaEl.appendChild(li);
-  });
-
-  const price = document.createElement('span');
-  price.className = 'tour-card__price';
-  price.textContent = formatPrice(tour.price) + ' за человека';
-
-  const discount = document.createElement('span');
-  discount.className = 'tour-card__discount';
-  discount.textContent = `При оплате онлайн: ${formatPrice(tour.price * 0.95)}`;
-
-  pricingEl.append(price, discount);
-
-  const track = card.querySelector('.carousel__track');
-  tour.photos.forEach((photoUrl, index) => {
-    const img = document.createElement('img');
-    img.src = photoUrl;
-    img.alt = `${tour.title} — фото ${index + 1}`;
-    track.appendChild(img);
-  });
-
-  const prevBtn = card.querySelector('.carousel__btn--prev');
-  const nextBtn = card.querySelector('.carousel__btn--next');
-  let currentIndex = 0;
-
-  function updateCarousel() {
-    const offset = -currentIndex * 100;
-    track.style.transform = `translateX(${offset}%)`;
+  /* ---------------- Тосты ---------------- */
+  let toastTimer;
+  function toast(msg) {
+    let el = $('#toast');
+    if (!el) { el = document.createElement('div'); el.id = 'toast'; el.className = 'toast'; document.body.appendChild(el); }
+    el.textContent = msg;
+    el.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('is-visible'), 3500);
   }
 
-  prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + tour.photos.length) % tour.photos.length;
-    updateCarousel();
-  });
+  /* ---------------- Меню кофейни ---------------- */
+  function renderMenu() {
+    const tabsEl = $('#menu-tabs');
+    const gridEl = $('#menu-grid');
+    if (!tabsEl) return;
+    const keys = Object.keys(CP.menu);
 
-  nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % tour.photos.length;
-    updateCarousel();
-  });
-
-  bookBtn.addEventListener('click', () => openBookingModal(tour));
-
-  return card;
-}
-
-function openBookingModal(tour) {
-  modalContent.innerHTML = '';
-  const form = bookingTemplate.content.firstElementChild.cloneNode(true);
-  form.querySelector('.booking-form__tour').textContent = `Экскурсия: ${tour.title}`;
-  form.dataset.price = tour.price;
-
-  const pickupSelect = form.querySelector('select[name="pickup"]');
-  tour.pickup.forEach((location) => {
-    const option = document.createElement('option');
-    option.value = location;
-    option.textContent = location;
-    pickupSelect.appendChild(option);
-  });
-
-  const transportSelect = form.querySelector('select[name="transport"]');
-  const seatSelect = form.querySelector('select[name="seat"]');
-  const participantsInput = form.querySelector('input[name="participants"]');
-  const paymentRadios = form.querySelectorAll('input[name="payment"]');
-  const totalEl = form.querySelector('.booking-form__total');
-
-  function updateSeats() {
-    const selectedOption = transportSelect.selectedOptions[0];
-    const capacity = Number(selectedOption.dataset.capacity || 1);
-    seatSelect.innerHTML = '';
-    for (let i = 1; i <= capacity; i += 1) {
-      const option = document.createElement('option');
-      option.value = `Место ${i}`;
-      option.textContent = `Место ${i}`;
-      seatSelect.appendChild(option);
+    function drawGrid(key) {
+      gridEl.innerHTML = '';
+      CP.menu[key].items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'menu-item';
+        card.innerHTML = `
+          <div class="menu-item__emoji">${item.emoji}</div>
+          <div class="menu-item__body">
+            <div class="menu-item__top">
+              <span class="menu-item__name">${item.name}</span>
+              <span class="menu-item__price">${item.price} ₽</span>
+            </div>
+            <p class="menu-item__desc">${item.desc || ''}</p>
+            ${item.tag ? `<span class="menu-item__tag">${item.tag}</span>` : ''}
+          </div>`;
+        gridEl.appendChild(card);
+      });
     }
+
+    keys.forEach((key, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'tab' + (i === 0 ? ' is-active' : '');
+      btn.textContent = CP.menu[key].label;
+      btn.addEventListener('click', () => {
+        $$('.tab', tabsEl).forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        drawGrid(key);
+      });
+      tabsEl.appendChild(btn);
+    });
+    drawGrid(keys[0]);
   }
 
-  function updateTotal() {
-    const basePrice = Number(form.dataset.price);
-    const participants = Number(participantsInput.value) || 0;
-    const isOnline = form.querySelector('input[name="payment"]:checked').value === 'online';
-    const total = basePrice * participants * (isOnline ? 0.95 : 1);
-    const totalText = isOnline
-      ? `К оплате со скидкой 5%: ${formatPrice(total)}`
-      : `К оплате: ${formatPrice(total)}`;
-    totalEl.textContent = totalText;
+  /* ---------------- Услуги печати ---------------- */
+  function renderServices() {
+    const el = $('#services');
+    if (!el) return;
+    CP.services.forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'service';
+      card.innerHTML = `
+        <div class="service__icon">${s.icon}</div>
+        <h3>${s.name}</h3>
+        <p>${s.desc}</p>
+        <div class="service__price"><b>${s.price}</b> <small>${s.unit}</small></div>
+        <button class="btn btn--ink" data-calc="${s.calc}">Рассчитать</button>`;
+      el.appendChild(card);
+    });
+    el.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-calc]');
+      if (!btn) return;
+      selectCalcService(btn.dataset.calc);
+      $('#calculator').scrollIntoView({ behavior: 'smooth' });
+    });
   }
 
-  updateSeats();
-  updateTotal();
+  /* ---------------- Акции / удобства / FAQ ---------------- */
+  function renderOffers() {
+    const el = $('#offers'); if (!el) return;
+    CP.offers.forEach(o => {
+      const d = document.createElement('div');
+      d.className = 'offer ' + (o.mod || '');
+      d.innerHTML = `<div class="emoji">${o.emoji}</div><h3>${o.title}</h3><p>${o.text}</p>`;
+      el.appendChild(d);
+    });
+  }
+  function renderPerks() {
+    const el = $('#perks'); if (!el) return;
+    CP.perks.forEach(p => {
+      const d = document.createElement('div');
+      d.className = 'perk';
+      d.innerHTML = `<div class="emoji">${p.emoji}</div><h3>${p.title}</h3><p>${p.text}</p>`;
+      el.appendChild(d);
+    });
+  }
+  function renderFaq() {
+    const el = $('#faq'); if (!el) return;
+    CP.faq.forEach(f => {
+      const d = document.createElement('details');
+      d.innerHTML = `<summary>${f.q}</summary><p>${f.a}</p>`;
+      el.appendChild(d);
+    });
+  }
+  function renderContacts() {
+    const c = CP.contacts;
+    const el = $('#contact-info'); if (!el) return;
+    el.innerHTML = `
+      <div class="contact-line"><span class="emoji">📍</span><div><b>Адрес</b><span>${c.address}</span></div></div>
+      <div class="contact-line"><span class="emoji">🕗</span><div><b>Часы работы</b><span>${c.hours}</span></div></div>
+      <div class="contact-line"><span class="emoji">📞</span><div><b>Телефон</b><span><a href="tel:${c.phoneHref}" style="text-decoration:none;color:inherit">${c.phone}</a></span></div></div>
+      <div class="contact-line"><span class="emoji">💬</span><div><b>WhatsApp</b><span>${c.whatsapp}</span></div></div>
+      <div class="contact-line"><span class="emoji">✉️</span><div><b>Почта</b><span>${c.email}</span></div></div>
+      <div class="socials">${c.socials.map(s => `<a href="${s.href}" aria-label="${s.label}">${s.label}</a>`).join('')}</div>`;
+    $$('[data-phone]').forEach(a => { a.href = 'tel:' + c.phoneHref; a.textContent = c.phone; });
+  }
 
-  transportSelect.addEventListener('change', () => {
-    updateSeats();
-    updateTotal();
+  /* ---------------- Калькулятор печати ---------------- */
+  const P = CP.pricing;
+  const sel = (opts) => ({ type: 'select', options: opts });
+
+  // Схемы услуг: поля формы + функция расчёта.
+  const calcServices = {
+    print: {
+      label: 'Печать', emoji: '🖨️',
+      fields: [
+        { name: 'color', label: 'Цвет', ...sel([['bw', 'Чёрно-белая'], ['color', 'Цветная']]) },
+        { name: 'format', label: 'Формат', ...sel([['a4', 'A4'], ['a3', 'A3']]) },
+        { name: 'sides', label: 'Печать', ...sel([['single', 'Односторонняя'], ['double', 'Двусторонняя']]) },
+        { name: 'paper', label: 'Бумага', ...sel([['80', 'Обычная 80 г'], ['160', 'Плотная 160 г'], ['photo', 'Фотобумага']]) },
+        { name: 'pages', label: 'Страниц в документе', type: 'number', min: 1, value: 10 },
+        { name: 'copies', label: 'Копий', type: 'number', min: 1, value: 1 },
+        { name: 'urgent', label: 'Срочно (5 минут)', type: 'check' }
+      ],
+      compute(v) {
+        const per = (v.color === 'color' ? P.print.color : P.print.bw)
+          * (v.format === 'a3' ? P.print.a3mult : 1)
+          * (P.print.paper[v.paper] || 1)
+          * (v.sides === 'double' ? P.print.duplexMult : 1)
+          * (v.urgent ? P.print.urgentMult : 1);
+        const qty = v.pages * v.copies;
+        return {
+          rows: [
+            ['Тип', v.color === 'color' ? 'Цветная' : 'Чёрно-белая'],
+            ['Формат / бумага', `${v.format.toUpperCase()} · ${v.paper === 'photo' ? 'фото' : v.paper + ' г'}`],
+            ['Объём', `${qty} стр · ${v.sides === 'double' ? '2-стор.' : '1-стор.'}`],
+            ['Цена за страницу', fmt(per)],
+            ...(v.urgent ? [['Срочный тариф', '×1.5']] : [])
+          ],
+          total: per * qty,
+          summary: `${v.color === 'color' ? 'Цветная' : 'Ч/б'} печать ${v.format.toUpperCase()}, ${v.pages} стр × ${v.copies}${v.urgent ? ' (срочно)' : ''}`
+        };
+      }
+    },
+    copy: {
+      label: 'Копирование', emoji: '📑',
+      fields: [
+        { name: 'color', label: 'Цвет', ...sel([['bw', 'Чёрно-белая'], ['color', 'Цветная']]) },
+        { name: 'format', label: 'Формат', ...sel([['a4', 'A4'], ['a3', 'A3']]) },
+        { name: 'pages', label: 'Страниц', type: 'number', min: 1, value: 10 },
+        { name: 'copies', label: 'Копий', type: 'number', min: 1, value: 1 }
+      ],
+      compute(v) {
+        const per = (v.color === 'color' ? P.copy.color : P.copy.bw) * (v.format === 'a3' ? P.copy.a3mult : 1);
+        const qty = v.pages * v.copies;
+        return {
+          rows: [['Тип', v.color === 'color' ? 'Цветная' : 'Ч/б'], ['Формат', v.format.toUpperCase()], ['Объём', qty + ' стр'], ['Цена за стр.', fmt(per)]],
+          total: per * qty,
+          summary: `Копирование ${v.format.toUpperCase()}, ${qty} стр`
+        };
+      }
+    },
+    scan: {
+      label: 'Скан', emoji: '📷',
+      fields: [{ name: 'pages', label: 'Страниц', type: 'number', min: 1, value: 10 }],
+      compute(v) {
+        return { rows: [['Сканирование', v.pages + ' стр'], ['Цена за стр.', fmt(P.scan.perPage)]], total: P.scan.perPage * v.pages, summary: `Сканирование, ${v.pages} стр` };
+      }
+    },
+    binding: {
+      label: 'Переплёт', emoji: '🎓',
+      fields: [
+        { name: 'type', label: 'Тип переплёта', ...sel([['spring', 'Пружина'], ['soft', 'Мягкий'], ['hard', 'Твёрдый (диплом)']]) },
+        { name: 'qty', label: 'Количество работ', type: 'number', min: 1, value: 1 }
+      ],
+      compute(v) {
+        const per = P.binding[v.type];
+        const t = { spring: 'Пружина', soft: 'Мягкий', hard: 'Твёрдый' }[v.type];
+        return { rows: [['Тип', t], ['Кол-во', v.qty + ' шт'], ['Цена за работу', fmt(per)]], total: per * v.qty, summary: `${t} переплёт × ${v.qty}` };
+      }
+    },
+    laminate: {
+      label: 'Ламинация', emoji: '🛡️',
+      fields: [
+        { name: 'format', label: 'Формат', ...sel([['a4', 'A4'], ['a3', 'A3']]) },
+        { name: 'qty', label: 'Листов', type: 'number', min: 1, value: 1 }
+      ],
+      compute(v) {
+        const per = P.laminate[v.format];
+        return { rows: [['Формат', v.format.toUpperCase()], ['Листов', v.qty], ['Цена за лист', fmt(per)]], total: per * v.qty, summary: `Ламинирование ${v.format.toUpperCase()} × ${v.qty}` };
+      }
+    },
+    docphoto: {
+      label: 'Фото на док.', emoji: '🪪',
+      fields: [{ name: 'sets', label: 'Комплектов', type: 'number', min: 1, value: 1 }],
+      compute(v) { return { rows: [['Комплектов', v.sets], ['Цена комплекта', fmt(P.docphoto.set)]], total: P.docphoto.set * v.sets, summary: `Фото на документы × ${v.sets}` }; }
+    },
+    wideformat: {
+      label: 'Широкоформат', emoji: '📐',
+      fields: [
+        { name: 'size', label: 'Размер', ...sel([['a2', 'A2'], ['a1', 'A1'], ['a0', 'A0']]) },
+        { name: 'qty', label: 'Количество', type: 'number', min: 1, value: 1 }
+      ],
+      compute(v) {
+        const per = P.wideformat[v.size];
+        return { rows: [['Размер', v.size.toUpperCase()], ['Кол-во', v.qty], ['Цена', fmt(per)]], total: per * v.qty, summary: `Широкоформат ${v.size.toUpperCase()} × ${v.qty}` };
+      }
+    },
+    photoPrint: {
+      label: 'Печать фото', emoji: '🖼️',
+      fields: [
+        { name: 'size', label: 'Размер', ...sel([['10x15', '10×15'], ['15x21', '15×21'], ['a4', 'A4']]) },
+        { name: 'qty', label: 'Количество', type: 'number', min: 1, value: 10 }
+      ],
+      compute(v) {
+        const per = P.photoPrint[v.size];
+        return { rows: [['Размер', v.size.replace('x', '×').toUpperCase()], ['Кол-во', v.qty + ' шт'], ['Цена за шт.', fmt(per)]], total: per * v.qty, summary: `Печать фото ${v.size} × ${v.qty}` };
+      }
+    },
+    souvenir: {
+      label: 'Сувениры', emoji: '🎁',
+      fields: [
+        { name: 'item', label: 'Изделие', ...sel([['mug', 'Кружка'], ['tshirt', 'Футболка']]) },
+        { name: 'qty', label: 'Количество', type: 'number', min: 1, value: 1 }
+      ],
+      compute(v) {
+        const per = P.souvenir[v.item];
+        const t = v.item === 'mug' ? 'Кружка' : 'Футболка';
+        return { rows: [['Изделие', t], ['Кол-во', v.qty + ' шт'], ['Цена за шт.', fmt(per)]], total: per * v.qty, summary: `${t} с печатью × ${v.qty}` };
+      }
+    }
+  };
+
+  let currentService = 'print';
+  let currentResult = null;
+
+  function buildServiceButtons() {
+    const wrap = $('#calc-services'); if (!wrap) return;
+    Object.entries(calcServices).forEach(([id, s]) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'calc__service-btn' + (id === currentService ? ' is-active' : '');
+      b.dataset.id = id;
+      b.innerHTML = `<span class="emoji">${s.emoji}</span>${s.label}`;
+      b.addEventListener('click', () => selectCalcService(id));
+      wrap.appendChild(b);
+    });
+  }
+
+  function selectCalcService(id) {
+    if (!calcServices[id]) return;
+    currentService = id;
+    $$('#calc-services .calc__service-btn').forEach(b => b.classList.toggle('is-active', b.dataset.id === id));
+    renderFields();
+    recalc();
+  }
+
+  function renderFields() {
+    const form = $('#calc-fields'); if (!form) return;
+    form.innerHTML = '';
+    calcServices[currentService].fields.forEach(f => {
+      const wrap = document.createElement('div');
+      wrap.className = 'field' + (f.type === 'check' ? ' field--check' : '');
+      if (f.type === 'select') {
+        wrap.innerHTML = `<label for="cf-${f.name}">${f.label}</label>
+          <select id="cf-${f.name}" name="${f.name}">${f.options.map(o => `<option value="${o[0]}">${o[1]}</option>`).join('')}</select>`;
+      } else if (f.type === 'number') {
+        wrap.innerHTML = `<label for="cf-${f.name}">${f.label}</label>
+          <input id="cf-${f.name}" name="${f.name}" type="number" min="${f.min || 1}" value="${f.value || 1}">`;
+      } else if (f.type === 'check') {
+        wrap.innerHTML = `<input id="cf-${f.name}" name="${f.name}" type="checkbox">
+          <label for="cf-${f.name}">${f.label}</label>`;
+      }
+      form.appendChild(wrap);
+    });
+    form.querySelectorAll('input, select').forEach(el => el.addEventListener('input', recalc));
+  }
+
+  function readValues() {
+    const v = {};
+    $$('#calc-fields [name]').forEach(el => {
+      if (el.type === 'checkbox') v[el.name] = el.checked;
+      else if (el.type === 'number') v[el.name] = Math.max(Number(el.min || 1), Number(el.value) || 0);
+      else v[el.name] = el.value;
+    });
+    return v;
+  }
+
+  function recalc() {
+    const result = calcServices[currentService].compute(readValues());
+    const student = $('#calc-student') && $('#calc-student').checked;
+    let total = result.total;
+    const rows = result.rows.slice();
+    if (student) {
+      const disc = total * P.studentDiscount;
+      rows.push(['Студенческая скидка', '−' + fmt(disc)]);
+      total -= disc;
+    }
+    currentResult = { service: currentService, summary: result.summary + (student ? ' · студ. −10%' : ''), total };
+
+    $('#calc-rows').innerHTML = rows.map(r => `<div class="calc__row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join('');
+    $('#calc-total-value').textContent = fmt(total);
+  }
+
+  /* ---------------- Оформление заказа ---------------- */
+  const modal = $('#order-modal');
+  function openOrder(prefill) {
+    if (!modal) return;
+    const r = prefill || currentResult;
+    $('#order-summary-text').textContent = r ? r.summary : 'Заказ из калькулятора';
+    $('#order-total').textContent = r ? fmt(r.total) : '—';
+    modal.dataset.service = r ? r.service : 'print';
+    modal.dataset.summary = r ? r.summary : '';
+    modal.dataset.total = r ? r.total : 0;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+  function closeOrder() { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden', 'true'); }
+
+  function initOrderModal() {
+    if (!modal) return;
+    $('#order-modal .modal__close').addEventListener('click', closeOrder);
+    modal.addEventListener('click', e => { if (e.target === modal) closeOrder(); });
+
+    // выбор доставки → показать адрес
+    const fulfillment = $('#order-fulfillment');
+    const addressField = $('#order-address-field');
+    fulfillment.addEventListener('change', () => {
+      addressField.style.display = fulfillment.value === 'delivery' ? '' : 'none';
+    });
+
+    // загрузка файлов (имена)
+    const fileInput = $('#order-files');
+    const fileList = $('#order-file-list');
+    $('#order-file-drop').addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', () => {
+      fileList.innerHTML = Array.from(fileInput.files).map(f => `<li>📎 ${f.name}</li>`).join('');
+    });
+
+    $('#order-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const files = Array.from(fileInput.files).map(f => f.name);
+      const order = Store.addOrder({
+        service: modal.dataset.service || 'print',
+        summary: modal.dataset.summary || 'Заказ',
+        total: Number(modal.dataset.total) || 0,
+        name: fd.get('name'),
+        phone: fd.get('phone'),
+        fulfillment: fd.get('fulfillment'),
+        address: fd.get('address') || '',
+        time: fd.get('time') || '',
+        comment: fd.get('comment') || '',
+        files
+      });
+      closeOrder();
+      e.target.reset();
+      fileList.innerHTML = '';
+      addressField.style.display = 'none';
+      toast(`Заказ ${order.id} принят! Мы позвоним для подтверждения ☕`);
+    });
+  }
+
+  /* ---------------- Программа лояльности ---------------- */
+  function renderLoyaltyCard(member) {
+    const card = $('#loy-card'); if (!card) return;
+    const stamps = [];
+    for (let i = 0; i < 6; i++) {
+      if (i === 5) stamps.push(`<div class="loy-stamp ${member.stamps >= 5 ? 'is-gift' : ''}">🎁</div>`);
+      else stamps.push(`<div class="loy-stamp ${i < member.stamps ? 'is-filled' : ''}">${i < member.stamps ? '☕' : ''}</div>`);
+    }
+    card.innerHTML = `
+      <h3>Карта «Кофе-принт»</h3>
+      <p class="loy-card__name">${member.name} · ${member.phone}</p>
+      <div class="loy-stamps">${stamps.join('')}</div>
+      <p class="loy-card__hint">${member.stamps}/6 до бесплатного кофе · бесплатных чашек получено: <b>${member.freeCups}</b></p>
+      <button class="btn btn--amber" id="loy-stamp-btn">+ Отметить покупку</button>`;
+    $('#loy-stamp-btn').addEventListener('click', () => {
+      const updated = Store.addStamp(member.phone);
+      if (updated.stamps === 0 && member.stamps === 5) toast('🎉 Поздравляем! Следующий кофе — бесплатно!');
+      renderLoyaltyCard(updated);
+    });
+  }
+
+  function initLoyalty() {
+    const form = $('#loy-form'); if (!form) return;
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const phone = (fd.get('phone') || '').trim();
+      if (!phone) return;
+      const member = Store.upsertMember(phone, (fd.get('name') || '').trim());
+      renderLoyaltyCard(member);
+      $('#loy-form-wrap').style.display = 'none';
+      toast(`Карта готова! Накоплено штампов: ${member.stamps}/6`);
+    });
+  }
+
+  /* ---------------- Контактная форма ---------------- */
+  function initContactForm() {
+    const form = $('#contact-form'); if (!form) return;
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      Store.addOrder({
+        service: 'cafe',
+        summary: 'Обращение с сайта: ' + (fd.get('message') || '').slice(0, 60),
+        total: 0,
+        name: fd.get('name'), phone: fd.get('phone'), fulfillment: 'pickup',
+        comment: fd.get('message') || '', files: []
+      });
+      form.reset();
+      toast('Спасибо! Мы свяжемся с вами в ближайшее время 🙌');
+    });
+  }
+
+  /* ---------------- Навигация (бургер) ---------------- */
+  function initNav() {
+    const burger = $('#burger'), nav = $('#nav');
+    if (burger) burger.addEventListener('click', () => nav.classList.toggle('is-open'));
+    $$('#nav a').forEach(a => a.addEventListener('click', () => nav.classList.remove('is-open')));
+    $$('[data-open-order]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); openOrder(); }));
+  }
+
+  /* ---------------- Старт ---------------- */
+  document.addEventListener('DOMContentLoaded', () => {
+    renderMenu();
+    renderServices();
+    renderOffers();
+    renderPerks();
+    renderFaq();
+    renderContacts();
+    buildServiceButtons();
+    renderFields();
+    recalc();
+    if ($('#calc-student')) $('#calc-student').addEventListener('change', recalc);
+    if ($('#calc-order-btn')) $('#calc-order-btn').addEventListener('click', () => openOrder());
+    initOrderModal();
+    initLoyalty();
+    initContactForm();
+    initNav();
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOrder(); });
   });
-
-  participantsInput.addEventListener('input', updateTotal);
-  paymentRadios.forEach((radio) => radio.addEventListener('change', updateTotal));
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-    const message = [
-      'Спасибо! Ваша заявка принята.',
-      `Экскурсия: ${tour.title}`,
-      `Дата: ${data.date}`,
-      `Количество участников: ${data.participants}`,
-      `Транспорт: ${transportSelect.selectedOptions[0].textContent}`,
-      `Место: ${data.seat}`,
-      `Место выезда: ${data.pickup}`,
-      `Оплата: ${data.payment === 'online' ? 'Онлайн со скидкой 5%' : 'На месте'}`,
-      'Менеджер свяжется с вами в течение 15 минут для подтверждения.'
-    ].join('\n');
-    alert(message);
-    closeModal();
-  });
-
-  modalContent.appendChild(form);
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden', 'false');
-}
-
-function closeModal() {
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-  modalContent.innerHTML = '';
-}
-
-modalClose.addEventListener('click', closeModal);
-modal.addEventListener('click', (event) => {
-  if (event.target === modal) {
-    closeModal();
-  }
-});
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && modal.classList.contains('is-open')) {
-    closeModal();
-  }
-});
-
-function init() {
-  tours.forEach((tour) => {
-    const card = createTourCard(tour);
-    tourList.appendChild(card);
-  });
-}
-
-init();
+})();
